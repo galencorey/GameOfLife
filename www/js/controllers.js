@@ -13,14 +13,20 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlayCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  const GRID_WIDTH = 20;
+  const GRID_HEIGHT = 20;
+
+  $scope.grid = [];
+
+  for (let i = 0; i < GRID_HEIGHT; i++){
+    let row = [];
+    for (let j = 0; j < GRID_WIDTH; j ++){
+      row.push(`${i}=${j}`)
+    }
+    $scope.grid.push(row);
+  }
+
+
 })
 
 
