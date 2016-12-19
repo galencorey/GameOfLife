@@ -13,18 +13,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlayCtrl', function($scope) {
-  const GRID_WIDTH = 20;
-  const GRID_HEIGHT = 20;
 
-  $scope.grid = [];
-
-  for (let i = 0; i < GRID_HEIGHT; i++){
-    let row = [];
-    for (let j = 0; j < GRID_WIDTH; j ++){
-      row.push(`${i}=${j}`)
-    }
-    $scope.grid.push(row);
-  }
 
 
 })
