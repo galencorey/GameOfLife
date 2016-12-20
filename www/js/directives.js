@@ -19,3 +19,15 @@ angular.module('starter.directives', [])
     }
   }
 })
+.directive('cell', function(){
+  return {
+    restrict: 'E',
+    template: '<div></div>',
+    scope: {
+      marker: '='
+    },
+    link: function(scope){
+      // console.log("MARKER: ", scope.marker)
+    }
+  }
+})

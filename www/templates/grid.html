@@ -1,3 +1,5 @@
   <div class="row" ng-repeat="row in grid" style="height: 5vw" >
-    <div class="col" ng-repeat="cell in row"id={{cell}} style="border: 1px solid black"></div>
+    <div class="col" style="border: 1px solid black" ng-repeat="cellId in row">
+      <cell marker=cellId ></cell>
+    </div>
   </div>
