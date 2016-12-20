@@ -22,12 +22,12 @@ angular.module('starter.directives', [])
 .directive('cell', function(){
   return {
     restrict: 'E',
-    template: '<div></div>',
+    templateUrl: '/templates/cell.html',
     scope: {
-      marker: '='
+      marker: '=',
+      isAlive: '='
     },
     link: function(scope){
-      // console.log("MARKER: ", scope.marker)
     }
   }
 })

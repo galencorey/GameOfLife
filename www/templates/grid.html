@@ -1,5 +1,5 @@
   <div class="row" ng-repeat="row in grid" style="height: 5vw" >
-    <div class="col gc-border" ng-repeat="cellId in row">
-      <cell marker=cellId ></cell>
+    <div class="col gc-border gc-no-padding" ng-repeat="cellId in row">
+      <cell is-alive=false marker=cellId ></cell>
     </div>
   </div>
