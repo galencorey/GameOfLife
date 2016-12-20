@@ -12,10 +12,32 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlayCtrl', function($scope) {
+.controller('PlayCtrl', function($scope, $interval) {
+  $scope.isPlaying = false;
+  let interval = null;
 
+  $scope.step = function(){
+    $scope.$broadcast('update state');
+  }
 
+  $scope.play = function(){
+    if (!$scope.isPlaying) {
+      interval = $interval($scope.step, 500);
+    } else {
+      $interval.cancel(interval);
+      interval = null;
+    }
+    $scope.isPlaying = !$scope.isPlaying;
+  }
 
+  $scope.clear = function(){
+    if ($scope.isPlaying){
+      $interval.cancel(interval);
+      interval = null;
+      $scope.isPlaying = false;
+    }
+    $scope.$broadcast('clear board');
+  }
 })
 
 

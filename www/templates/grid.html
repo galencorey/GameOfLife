@@ -1,5 +1,5 @@
   <div class="row" ng-repeat="row in grid" style="height: 5vw" >
-    <div class="col gc-border gc-no-padding" ng-repeat="cellId in row">
-      <cell is-alive=isAlive(cellId) marker=cellId cell-click=cellClick(cellId)></cell>
+    <div class="col gc-border gc-no-padding" ng-repeat="cell in row">
+      <cell is-alive=isAlive(cell.marker) marker=cell.marker neighbors = cell.neighbors cell-click=cellClick(cell)></cell>
     </div>
   </div>

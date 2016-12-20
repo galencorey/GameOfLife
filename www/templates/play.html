@@ -3,5 +3,10 @@
    <div class="card">
      <grid></grid>
    </div>
+  <div class="button-bar">
+    <a class="button button-calm" ng-click="step()">Step</a>
+    <a class="button button-calm" ng-click="play()">{{isPlaying ? "Pause" : "Play" }}</a>
+    <a class="button button-calm" ng-click="clear()">Clear</a>
+  </div>
   </ion-content>
 </ion-view>
