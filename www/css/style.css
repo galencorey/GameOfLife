@@ -1,4 +1,4 @@
 /* Empty. Add your own CSS if you like */
-table {
-  border: 5px solid black;
+.gc-border {
+  border: 0.5px solid #bfbfbf;
 }
