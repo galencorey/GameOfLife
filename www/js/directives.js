@@ -57,9 +57,9 @@ angular.module('starter.directives', [])
           .filter(function(pair){
             return pair[0] >= 0 && pair[1] >=0
           })
-          .map(function(pair){ return `${pair[0]}-${pair[1]}`})
+          .map(function(pair){ return pair[0]+ '-'+ pair[1] })
 
-          row.push({marker: `${i}-${j}`, neighbors})
+          row.push({marker: i+'-'+j, neighbors})
         }
         grid.push(row);
       }
