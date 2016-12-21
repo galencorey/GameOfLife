@@ -4,19 +4,21 @@ angular.module('starter.directives', [])
     restrict: 'E',
     templateUrl: '/templates/grid.html',
     link: function(scope){
+      console.log('inside the grid directive')
       scope.grid = GridFactory.makeGrid(20,20);
       scope.alive = [];
 
       scope.cellClick = function(cell){
-        if (scope.alive.map(c => c.marker).includes(cell.marker)){
-          scope.alive = scope.alive.filter(aliveCell => aliveCell.marker !== cell.marker);
+        console.log("cell was clicked")
+        if (scope.alive.map(function(c){return c.marker}).includes(cell.marker)){
+          scope.alive = scope.alive.filter(function(aliveCell){return aliveCell.marker !== cell.marker});
         } else {
           scope.alive.push(cell)
         }
       }
 
       scope.isAlive  = function(cellMarker){
-        return scope.alive.map(cell => cell.marker).includes(cellMarker);
+        return scope.alive.map(function(cell){return cell.marker}).includes(cellMarker);
       }
 
       scope.$on('update state', function(){
@@ -40,19 +42,22 @@ angular.module('starter.directives', [])
       cellClick: '&'
     },
     link: function(scope){
+      console.log('inside the cell directive')
     }
   }
 })
 .factory('GridFactory', function(){
   return {
     makeGrid: function(width, height){
-      let grid = [];
-      for (let i = 0; i < height; i++){
-        let row = [];
-        for (let j = 0; j < width; j ++){
-          const neighbors =[[i - 1, j - 1], [i - 1, j], [i - 1, j + 1], [i , j + 1], [i , j - 1], [i + 1 , j + 1], [i + 1, j], [i + 1, j - 1]]
-          .filter(([a, b]) => a >= 0 && b >=0)
-          .map(([a, b]) => `${a}-${b}`)
+      var grid = [];
+      for (var i = 0; i < height; i++){
+        var row = [];
+        for (var j = 0; j < width; j ++){
+          var neighbors =[[i - 1, j - 1], [i - 1, j], [i - 1, j + 1], [i , j + 1], [i , j - 1], [i + 1 , j + 1], [i + 1, j], [i + 1, j - 1]]
+          .filter(function(pair){
+            return pair[0] >= 0 && pair[1] >=0
+          })
+          .map(function(pair){ return `${pair[0]}-${pair[1]}`})
 
           row.push({marker: `${i}-${j}`, neighbors})
         }
@@ -62,11 +67,11 @@ angular.module('starter.directives', [])
     },
 
     getNextState: function(currState, grid){
-      let nextState = [];
+      var nextState = [];
       grid.forEach(function(row){
         row.forEach(function(cell){
-          const livingNeighborsCount = cell.neighbors.filter((neighbor)=>{
-            return currState.map(cell => cell.marker).includes(neighbor)
+          var livingNeighborsCount = cell.neighbors.filter(function(neighbor){
+            return currState.map(function(cell){ return cell.marker}).includes(neighbor)
           }).length;
           if (livingNeighborsCount === 3){
             nextState.push(cell)

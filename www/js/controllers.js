@@ -13,8 +13,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlayCtrl', function($scope, $interval) {
+  console.log('entered play ctrl')
   $scope.isPlaying = false;
-  let interval = null;
+  var interval = null;
 
   $scope.step = function(){
     $scope.$broadcast('update state');
@@ -31,6 +32,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.clear = function(){
+    console.log("clear button pressed")
     if ($scope.isPlaying){
       $interval.cancel(interval);
       interval = null;
