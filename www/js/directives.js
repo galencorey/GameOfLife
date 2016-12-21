@@ -2,7 +2,7 @@ angular.module('starter.directives', [])
 .directive('grid', function(GridFactory){
   return {
     restrict: 'E',
-    templateUrl: '/templates/grid.html',
+    templateUrl: 'templates/grid.html',
     link: function(scope){
       console.log('inside the grid directive')
       scope.grid = GridFactory.makeGrid(20,20);
@@ -35,7 +35,7 @@ angular.module('starter.directives', [])
 .directive('cell', function(){
   return {
     restrict: 'E',
-    templateUrl: '/templates/cell.html',
+    templateUrl: 'templates/cell.html',
     scope: {
       marker: '=',
       isAlive: '=',
