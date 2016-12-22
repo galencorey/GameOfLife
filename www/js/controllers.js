@@ -21,6 +21,11 @@ angular.module('starter.controllers', [])
     $scope.$broadcast('update state');
   }
 
+  $scope.random = function(){
+    $scope.clear();
+    $scope.$broadcast('reset random');
+  }
+
   $scope.play = function(){
     if (!$scope.isPlaying) {
       interval = $interval($scope.step, 500);

@@ -4,8 +4,10 @@ angular.module('starter.directives', [])
     restrict: 'E',
     templateUrl: 'templates/grid.html',
     link: function(scope){
-      console.log('inside the grid directive')
-      scope.grid = GridFactory.makeGrid(6,10);
+      var gridWidth = 6;
+      var gridHeight = 10;
+
+      scope.grid = GridFactory.makeGrid(gridWidth, gridHeight);
       scope.alive = [];
 
       scope.cellClick = function(cell){
@@ -27,6 +29,16 @@ angular.module('starter.directives', [])
          if (scope.alive.length === 0){
           scope.$emit('board cleared');
          }
+      })
+
+      scope.$on('reset random', function(){
+        var rand = [];
+        scope.grid.forEach(function(row){
+          row.forEach(function(cell){
+            if (Math.random() > .7) rand.push(cell)
+          })
+        })
+        scope.alive = rand;
       })
 
       scope.$on('clear board', function(){
