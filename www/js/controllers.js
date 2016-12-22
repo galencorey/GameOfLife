@@ -40,6 +40,14 @@ angular.module('starter.controllers', [])
     }
     $scope.$broadcast('clear board');
   }
+  $scope.$on('board cleared', function(){
+    if (interval){
+      $interval.cancel(interval);
+      interval = null;
+    }
+    $scope.isPlaying = false;
+  })
+
 })
 
 

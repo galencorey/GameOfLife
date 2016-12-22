@@ -5,7 +5,7 @@ angular.module('starter.directives', [])
     templateUrl: 'templates/grid.html',
     link: function(scope){
       console.log('inside the grid directive')
-      scope.grid = GridFactory.makeGrid(20,20);
+      scope.grid = GridFactory.makeGrid(5,10);
       scope.alive = [];
 
       scope.cellClick = function(cell){
@@ -15,6 +15,7 @@ angular.module('starter.directives', [])
         } else {
           scope.alive.push(cell)
         }
+        console.log(scope.alive)
       }
 
       scope.isAlive  = function(cellMarker){
@@ -23,6 +24,9 @@ angular.module('starter.directives', [])
 
       scope.$on('update state', function(){
          scope.alive = GridFactory.getNextState(scope.alive, scope.grid)
+         if (scope.alive.length === 0){
+          scope.$emit('board cleared');
+         }
       })
 
       scope.$on('clear board', function(){
@@ -32,7 +36,7 @@ angular.module('starter.directives', [])
     } //end link fn
   }
 })
-.directive('cell', function(){
+.directive('cell', function($ionicGesture){
   return {
     restrict: 'E',
     templateUrl: 'templates/cell.html',
@@ -43,6 +47,7 @@ angular.module('starter.directives', [])
     },
     link: function(scope){
       console.log('inside the cell directive')
+
     }
   }
 })
@@ -85,3 +90,4 @@ angular.module('starter.directives', [])
 
   }
 })
+

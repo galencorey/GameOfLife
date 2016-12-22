@@ -1,4 +1,4 @@
-  <div class="row" ng-repeat="row in grid" style="height: 5vw" >
+  <div class="row" ng-repeat="row in grid">
     <div class="col gc-border gc-no-padding" ng-repeat="cell in row">
       <cell is-alive=isAlive(cell.marker) marker=cell.marker neighbors = cell.neighbors cell-click=cellClick(cell)></cell>
     </div>
