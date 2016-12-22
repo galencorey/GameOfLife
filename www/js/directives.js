@@ -5,7 +5,7 @@ angular.module('starter.directives', [])
     templateUrl: 'templates/grid.html',
     link: function(scope){
       console.log('inside the grid directive')
-      scope.grid = GridFactory.makeGrid(5,10);
+      scope.grid = GridFactory.makeGrid(6,10);
       scope.alive = [];
 
       scope.cellClick = function(cell){
