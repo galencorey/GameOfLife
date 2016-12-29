@@ -4,8 +4,8 @@ angular.module('starter.directives', [])
     restrict: 'E',
     templateUrl: 'templates/grid.html',
     link: function(scope){
-      var gridWidth = 6;
-      var gridHeight = 10;
+      var gridWidth = 5;
+      var gridHeight = 8;
 
       scope.grid = GridFactory.makeGrid(gridWidth, gridHeight);
       scope.alive = [];
